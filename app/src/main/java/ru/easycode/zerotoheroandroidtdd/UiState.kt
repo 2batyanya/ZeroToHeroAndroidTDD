@@ -2,9 +2,8 @@ package ru.easycode.zerotoheroandroidtdd
 
 import android.widget.Button
 import android.widget.TextView
-import java.io.Serializable
 
-interface UiState : Serializable {
+interface UiState {
 
     fun apply(decrementButton: Button, incrementButton: Button, textView: TextView)
 

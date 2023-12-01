@@ -1,6 +1,5 @@
 package ru.easycode.zerotoheroandroidtdd
 
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -33,27 +32,17 @@ class MainActivity : AppCompatActivity() {
             uiState.apply(decrementButton, incrementButton, textView)
         }
 
-        if (savedInstanceState == null) {
-            uiState = count.initial(textView.text.toString())
-            uiState.apply(decrementButton, incrementButton, textView)
-        }
-    }
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putSerializable(KEY, uiState)
+            if(savedInstanceState == null) {
+                uiState = count.initial(textView.text.toString())
+                uiState.apply(decrementButton, incrementButton, textView)
+            }
+
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        uiState = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            savedInstanceState.getSerializable(KEY, UiState::class.java) as UiState
-        } else {
-            savedInstanceState.getSerializable(KEY) as UiState
-        }
-        uiState.apply(decrementButton, incrementButton, textView)
-    }
 
-    companion object {
-        private const val KEY = "uiStateKey"
+        uiState = count.initial(textView.text.toString())
+        uiState.apply(decrementButton, incrementButton, textView)
     }
 }
