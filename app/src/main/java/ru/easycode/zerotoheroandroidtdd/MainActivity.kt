@@ -2,6 +2,8 @@ package ru.easycode.zerotoheroandroidtdd
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             button.isEnabled = false
             progressBar.visibility = View.VISIBLE
-            button.postDelayed({
+            Handler(Looper.getMainLooper()).postDelayed({
                 textView.visibility = View.VISIBLE
                 progressBar.visibility = View.GONE
                 button.isEnabled = true
