@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,10 +22,14 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             button.isEnabled = false
             progressBar.visibility = View.VISIBLE
-            Handler(Looper.getMainLooper()).postDelayed({
-                textView.visibility = View.VISIBLE
-                progressBar.visibility = View.GONE
-                button.isEnabled = true
+
+            java.util.Timer().schedule(object: TimerTask(){
+                override fun run() = runOnUiThread(){
+                    textView.visibility = View.VISIBLE
+                    progressBar.visibility = View.GONE
+                    button.isEnabled = true
+                }
+
             }, 3000)
         }
     }
