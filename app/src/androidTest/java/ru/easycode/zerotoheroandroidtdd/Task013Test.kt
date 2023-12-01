@@ -30,7 +30,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class Task013Test {
 
-    @get:Rule
+    @get:Rule  
     var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
