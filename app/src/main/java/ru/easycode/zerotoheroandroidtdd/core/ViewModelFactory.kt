@@ -8,7 +8,7 @@ interface ViewModelFactory : ProvideViewModel, ClearViewModel {
         private val provideViewModel: ProvideViewModel
     ) : ViewModelFactory {
 
-        private val map = mutableMapOf<Class<out ViewModel>, ViewModel>()
+        private val map = mutableMapOf<Class<out ViewModel>, ViewModel?>()
 
         override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {
             val viewModel = map[viewModelClass]
@@ -18,7 +18,7 @@ interface ViewModelFactory : ProvideViewModel, ClearViewModel {
         }
 
         override fun clear(viewModelClass: Class<out ViewModel>) {
-            map.remove(viewModelClass)
+            map[viewModelClass] = null
         }
     }
 }
