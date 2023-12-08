@@ -44,7 +44,7 @@ class CreateViewModelTest {
 
     @Test
     fun test_comeback() {
-        viewModel.comeback()
+        viewModel. comeback()
         navigation.checkUpdateCalled(listOf(Screen.Pop))
         clearViewModel.checkClearCalled(CreateViewModel::class.java)
     }
